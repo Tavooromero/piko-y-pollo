@@ -1,540 +1,371 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Piko y Pollo | Pollo Fresco y Derivados</title>
-    <style>
-        /* ==========================================
-           1. ESTILOS BÁSICOS & VARIABLES (CSS3)
-           ========================================== */
-        :root {
-            --color-primary: #f59e0b;     /* Amarillo / Dorado vibrante */
-            --color-secondary: #dc2626;   /* Rojo vivo */
-            --color-dark: #3a1c0d;        /* Café oscuro elegante */
-            --color-light: #fefce8;       /* Fondo suave crema */
-            --color-white: #ffffff;
-            --color-gray: #f3f4f6;
-            --shadow-standard: 0 4px 15px rgba(0, 0, 0, 0.1);
-            --transition-fast: all 0.3s ease;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: #fafafa;
-            color: #333;
-            line-height: 1.6;
-        }
-
-        /* ==========================================
-           2. HEADER & NAVEGACIÓN
-           ========================================== */
-        header {
-            background: linear-gradient(135deg, var(--color-dark), #1c0d06);
-            color: var(--color-white);
-            padding: 1rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: var(--shadow-standard);
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .logo-icon {
-            background-color: var(--color-primary);
-            color: var(--color-dark);
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: bold;
-            font-size: 1.4rem;
-            box-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
-        }
-
-        .logo-text h1 {
-            font-size: 1.6rem;
-            color: var(--color-primary);
-            letter-spacing: 1px;
-        }
-
-        .logo-text span {
-            font-size: 0.75rem;
-            color: #d1d5db;
-            display: block;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 20px;
-        }
-
-        nav a {
-            color: var(--color-white);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: var(--transition-fast);
-            padding: 5px 10px;
-            border-radius: 5px;
-        }
-
-        nav a:hover {
-            color: var(--color-primary);
-            background-color: rgba(255, 255, 255, 0.05);
-        }
-
-        /* ==========================================
-           3. HERO / SECCIÓN PRINCIPAL
-           ========================================== */
-        .hero {
-    /* Mantiene el sombreado y tu imagen de fondo */
-    background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('camiones.png');
-    
-    /* Hace que la imagen llene todo el ancho y alto */
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    
-    /* Le da a la sección la altura perfecta en pantalla completa para alejarse */
-    min-height: 80vh; 
-    
-    /* Centra el texto y el botón dentro del banner */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    
-    color: var(--color-white);
-    text-align: center;
-    padding: 2rem 1rem;
-}
-                  
-
-        .hero h2 {
-            font-size: 2.8rem;
-            margin-bottom: 1rem;
-            color: var(--color-primary);
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 2rem;
-        }
-
-        /* Botones personalizados */
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            border-radius: 30px;
-            font-weight: bold;
-            text-decoration: none;
-            border: none;
-            cursor: pointer;
-            transition: var(--transition-fast);
-            font-size: 1rem;
-        }
-
-        .btn-primary {
-            background-color: var(--color-secondary);
-            color: var(--color-white);
-            box-shadow: 0 4px 10px rgba(220, 38, 38, 0.4);
-        }
-
-        .btn-primary:hover {
-            background-color: #b91c1c;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(220, 38, 38, 0.6);
-        }
-
-        /* ==========================================
-           4. SECCIÓN DE ARTÍCULOS Y CARACTERÍSTICAS
-           ========================================== */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 4rem 1.5rem;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.2rem;
-            color: var(--color-dark);
-            margin-bottom: 2.5rem;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            width: 70px;
-            height: 4px;
-            background-color: var(--color-primary);
-            display: block;
-            margin: 8px auto 0;
-            border-radius: 2px;
-        }
-
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        article.card {
-            background: var(--color-white);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: var(--shadow-standard);
-            transition: var(--transition-fast);
-        }
-
-        article.card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-        }
-
-        .card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .card-content {
-            padding: 1.5rem;
-        }
-
-        .card-content h3 {
-            color: var(--color-dark);
-            margin-bottom: 0.5rem;
-        }
-
-        /* Listas estilizadas */
-        .features-list {
-            list-style-type: none;
-            margin-top: 1rem;
-        }
-
-        .features-list li {
-            padding: 8px 0;
-            border-bottom: 1px dashed #e5e7eb;
-            display: flex;
-            align-items: center;
-        }
-
-        .features-list li::before {
-            content: "✓";
-            color: var(--color-secondary);
-            font-weight: bold;
-            margin-right: 10px;
-        }
-
-        /* ==========================================
-           5. TABLA DE PRODUCTOS
-           ========================================== */
-        .table-container {
-            overflow-x: auto;
-            margin-top: 1.5rem;
-            box-shadow: var(--shadow-standard);
-            border-radius: 10px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background-color: var(--color-white);
-            text-align: left;
-        }
-
-        th {
-            background-color: var(--color-dark);
-            color: var(--color-primary);
-            padding: 15px;
-            font-size: 1rem;
-        }
-
-        td {
-            padding: 12px 15px;
-            border-bottom: 1px solid #ddd;
-        }
-
-        tr:nth-child(even) {
-            background-color: var(--color-light);
-        }
-
-        tr:hover {
-            background-color: #fef3c7;
-        }
-
-        .badge {
-            background-color: #10b981;
-            color: white;
-            padding: 4px 8px;
-            border-radius: 12px;
-            font-size: 0.8rem;
-            font-weight: bold;
-        }
-
-        /* ==========================================
-           6. MULTIMEDIA (VIDEO E IFRAME)
-           ========================================== */
-        .media-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-            margin-top: 2rem;
-        }
-
-        .media-card {
-            background-color: var(--color-white);
-            padding: 1.5rem;
-            border-radius: 12px;
-            box-shadow: var(--shadow-standard);
-        }
-
-        .media-card h3 {
-            margin-bottom: 1rem;
-            color: var(--color-dark);
-        }
-
-        video, iframe {
-            width: 100%;
-            height: 250px;
-            border-radius: 8px;
-            border: none;
-        }
-
-        /* ==========================================
-           7. FOOTER
-           ========================================== */
-        footer {
-            background-color: var(--color-dark);
-            color: #9ca3af;
-            text-align: center;
-            padding: 2rem 1rem;
-            margin-top: 3rem;
-            border-top: 4px solid var(--color-primary);
-        }
-
-        footer p {
-            margin-bottom: 0.5rem;
-        }
-
-        footer a {
-            color: var(--color-primary);
-            text-decoration: none;
-        }
-
-        /* ==========================================
-           8. RESPONSIVIDAD (Media Queries)
-           ========================================== */
-        @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                gap: 15px;
-                text-align: center;
-            }
-
-            nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
-            .hero h2 {
-                font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-        }
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Piko y Pollo | Pollo Fresco y Derivados</title>
+<meta name="description" content="Piko y Pollo: procesamiento y distribución de pollo 100% fresco, sin hormonas agregadas, con entrega refrigerada a hogares, restaurantes y supermercados." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐔</text></svg>">
 </head>
 <body>
 
-    <!-- HEADER Y NAVEGACIÓN -->
-    <header>
-        <div class="logo">
-            <div class="logo-icon">P</div>
-            <div class="logo-text">
-                <h1>PIKO Y POLLO</h1>
-                <span>POLLO FRESCO, SIEMPRE</span>
-            </div>
+<a class="skip-link" href="#main">Saltar al contenido principal</a>
+
+<!-- ===== HEADER ===== -->
+<header class="site-header" id="top">
+  <div class="header-inner">
+    <a href="#inicio" class="brand">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 48 48" width="34" height="34"><path d="M24 6c9 0 15 6 15 14 0 5-2 8-5 10l3 12H11l3-12c-3-2-5-5-5-10 0-8 6-14 15-14Z" fill="#F0A202"/><path d="M31 16c2 0 4 1.5 4 4s-2 4-4 4" fill="none" stroke="#241A14" stroke-width="2" stroke-linecap="round"/><circle cx="28" cy="17" r="1.6" fill="#241A14"/></svg>
+      </span>
+      <span class="brand-text">Piko <em>&amp;</em> Pollo</span>
+    </a>
+
+    <nav class="main-nav" id="main-nav" aria-label="Navegación principal">
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#productos">Productos</a></li>
+        <li><a href="#proceso">Proceso</a></li>
+        <li><a href="#testimonios">Clientes</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <button class="icon-btn cart-toggle" id="cartToggle" aria-haspopup="dialog" aria-controls="cartPanel" aria-label="Abrir carrito de pedido">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="21" r="1.4"/><circle cx="18" cy="21" r="1.4"/><path d="M2.5 3h2.4l2.7 12.4a2 2 0 0 0 2 1.6h8a2 2 0 0 0 2-1.6L21.5 7H6.2"/></svg>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+      <button class="icon-btn nav-toggle" id="navToggle" aria-expanded="false" aria-controls="main-nav" aria-label="Abrir menú">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="inicio">
+    <div class="hero-inner">
+      <div class="hero-copy reveal">
+        <p class="hero-eyebrow">Pollo fresco · Sucre, Colombia</p>
+        <h1>La frescura que se nota en cada corte, el sabor que se siente en tu mesa.</h1>
+        <p class="hero-lead">Procesamos y distribuimos pollo 100% fresco bajo estándares estrictos de calidad e inocuidad — desde la granja hasta tu cocina, sin perder la cadena de frío.</p>
+        <div class="hero-actions">
+          <a href="#productos" class="btn btn-primary">Ver productos</a>
+          <a href="#" class="btn btn-whatsapp" id="heroWhatsapp">Hacer pedido</a>
+          <a href="#nosotros" class="btn btn-ghost">Conócenos</a>
         </div>
-        <nav>
-            <ul>
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#nosotros">Nosotros</a></li>
-                <li><a href="#productos">Productos</a></li>
-                <li><a href="#multimedia">Multimedia</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-            </ul>
-        </nav>
-    </header>
+        <ul class="hero-trust">
+          <li><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> 100% fresco, cero congelación previa</li>
+          <li><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Sin hormonas agregadas</li>
+          <li><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Entrega en cadena de frío</li>
+        </ul>
+      </div>
+      <div class="hero-gallery" aria-hidden="true">
+        <div class="hg-item hg-1"><img src="polloentero.png" alt="" loading="lazy"></div>
+        <div class="hg-item hg-2"><img src="pechuga.png" alt="" loading="lazy"></div>
+        <div class="hg-item hg-3"><img src="alitasmarinadas.png" alt="" loading="lazy"></div>
+        <div class="hg-item hg-4"><img src="nuggets.png" alt="" loading="lazy"></div>
+        <span class="hg-badge">+15 años<br>llevando frescura</span>
+      </div>
+    </div>
+    <svg class="wave-divider" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0,40 C240,90 480,0 720,20 C960,40 1200,90 1440,40 L1440,80 L0,80 Z"></path></svg>
+  </section>
 
-    <!-- SECCIÓN HERO -->
-    <section id="inicio" class="hero">
-        <h2>Llevamos la frescura a tu mesa</h2>
-        <p>Más que pollo, ¡es confianza! Procesamiento y distribución de pollo 100% fresco, bajo los más estrictos estándares de calidad e inocuidad.</p>
-        <a href="#productos" class="btn btn-primary">Ver Catálogo de Productos</a>
-    </section>
+  <!-- ===== POR QUÉ ELEGIRNOS ===== -->
+  <section class="section why" id="por-que" aria-labelledby="why-title">
+    <div class="container">
+      <div class="section-head reveal">
+        <h2 id="why-title">¿Por qué elegir Piko y Pollo?</h2>
+        <p>Cuatro razones por las que hogares, restaurantes y supermercados confían en nosotros todos los días.</p>
+      </div>
+      <div class="why-grid">
+        <article class="why-card reveal">
+          <span class="why-icon" style="--c:#4C7A3D"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-4.5-7-10a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 5.5-7 10-7 10s-2-1-4-3"/></svg></span>
+          <h3>Alimentación &amp; bienestar</h3>
+          <p>Crianza en granjas certificadas con alimentación balanceada, 100% natural y libre de hormonas agregadas.</p>
+        </article>
+        <article class="why-card reveal">
+          <span class="why-icon" style="--c:#D6472E"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2 3 6v6c0 5 4 8.5 9 10 5-1.5 9-5 9-10V6l-9-4Z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg></span>
+          <h3>Calidad garantizada</h3>
+          <p>Plantas de última tecnología, corte e higiene automatizados y empaque al vacío con trazabilidad completa.</p>
+        </article>
+        <article class="why-card reveal">
+          <span class="why-icon" style="--c:#F0A202"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="9" width="13" height="8" rx="1.5"/><path d="M15 12h4l3 3v2h-7z"/><circle cx="7" cy="19" r="1.6"/><circle cx="18" cy="19" r="1.6"/></svg></span>
+          <h3>Distribución nacional</h3>
+          <p>Flota 100% refrigerada con rutas puntuales para hogares, restaurantes y supermercados, sin romper el frío.</p>
+        </article>
+        <article class="why-card reveal">
+          <span class="why-icon" style="--c:#241A14"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v9l6 3"/><circle cx="12" cy="12" r="9"/></svg></span>
+          <h3>Frescura del día</h3>
+          <p>Producción diaria y despacho el mismo día: nada de inventario dormido en bodega esperando comprador.</p>
+        </article>
+      </div>
+    </div>
+  </section>
 
-    <!-- CONTENIDO PRINCIPAL -->
-    <main class="container">
-        
-        <!-- SOBRE NOSOTROS -->
-        <section id="nosotros">
-            <h2 class="section-title">¿Por qué elegir Piko y Pollo?</h2>
-            <div class="cards-grid">
-                <article class="card">
-                    <img src="granja.png" alt="Bienestar Animal">
-                    <div class="card-content">
-                        <h3>Alimentación & Bienestar</h3>
-                        <p>Nuestra crianza prioriza una alimentación balanceada y libre de hormonas agregadas, garantizando una carne suave y nutritiva.</p>
-                        <ul class="features-list">
-                            <li>Crianza en granjas certificadas</li>
-                            <li>Alimentación 100% natural</li>
-                        </ul>
-                    </div>
-                </article>
+  <!-- ===== PRODUCTOS ===== -->
+  <section class="section products-section" id="productos" aria-labelledby="products-title">
+    <div class="container">
+      <div class="section-head reveal">
+        <h2 id="products-title">Nuestro catálogo</h2>
+        <p>Selecciona una categoría, agrega lo que necesitas y arma tu pedido para enviarlo directo por WhatsApp.</p>
+      </div>
 
-                <article class="card">
-                    <img src="productos.png" alt="Procesamiento de Pollo">
-                    <div class="card-content">
-                        <h3>Calidad Garantizada</h3>
-                        <p>Contamos con plantas procesadoras de última tecnología con cadena de frío ininterrumpida hasta llegar a tu cocina.</p>
-                        <ul class="features-list">
-                            <li>Corte e higiene automatizados</li>
-                            <li>Empaque al vacío seguro</li>
-                        </ul>
-                    </div>
-                </article>
+      <div class="filter-bar reveal" role="tablist" aria-label="Filtrar productos por categoría">
+        <button class="filter-chip is-active" data-filter="todos" role="tab" aria-selected="true">Todos</button>
+        <button class="filter-chip" data-filter="entero" role="tab" aria-selected="false">Aves enteras</button>
+        <button class="filter-chip" data-filter="cortes" role="tab" aria-selected="false">Cortes</button>
+        <button class="filter-chip" data-filter="preparado" role="tab" aria-selected="false">Preparados</button>
+        <button class="filter-chip" data-filter="embutido" role="tab" aria-selected="false">Embutidos</button>
+      </div>
 
-                <article class="card">
-                    <img src="vehiculos.png" alt="Distribución">
-                    <div class="card-content">
-                        <h3>Distribución Nacional</h3>
-                        <p>Flota refrigerada de entregas para supermercados, restaurantes y hogares con entregas a tiempo y la máxima frescura.</p>
-                        <ul class="features-list">
-                            <li>Logística de refrigeración pro</li>
-                            <li>Atención al mayor y detal</li>
-                        </ul>
-                    </div>
-                </article>
-            </div>
-        </section>
+      <div class="product-grid" id="productGrid"><!-- generado por JS --></div>
+    </div>
+  </section>
 
-        <!-- TABLA DE PRODUCTOS -->
-        <table class="tabla-productos">
-    <thead>
-        <tr>
-            <th>Imagen</th> <!-- Nueva columna -->
-            <th>Código</th>
-            <th>Producto / Derivado</th>
-            <th>Presentación</th>
-            <th>Estado</th>
-            <th>Acción</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-    <img src="polloentero.png" alt="Pollo Entero Limpio" style="width: 100px; height: 100px; object-fit: cover; border-radius: 10px;">
-</td>
-            <td>PK-001</td>
-            <td>Pollo Entero Limpio</td>
-            <td>Bolsa individual (1.8 - 2.2 kg)</td>
-            <td><span class="badge disponible">Disponible</span></td>
-            <td><a href="#contacto" class="btn-solicitar">Solicitar</a></td>
-        </tr>
-        <tr>
-            <td>
-    <img src="pechuga.png" alt="Pollo Entero Limpio" style="width: 100px; height: 100px; object-fit: cover; border-radius: 10px;">
-</td>
-            <td>PK-002</td>
-            <td>Pechuga Deshuesada</td>
-            <td>Bandeja de 1 kg / Al vacío</td>
-            <td><span class="badge disponible">Disponible</span></td>
-            <td><a href="#contacto" class="btn-solicitar">Solicitar</a></td>
-        </tr>
-        <tr>
-           <td>
-    <img src="alitasmarinadas.png" alt="Pollo Entero Limpio" style="width: 100px; height: 100px; object-fit: cover; border-radius: 10px;">
-</td>
-            <td>PK-003</td>
-            <td>Alitas Maradas (BBQ / Picante)</td>
-            <td>Empaque de 500g</td>
-            <td><span class="badge disponible">Disponible</span></td>
-            <td><a href="#contacto" class="btn-solicitar">Solicitar</a></td>
-        </tr>
-        <tr>
-            <td>
-    <img src="nuggets.png" alt="Pollo Entero Limpio" style="width: 100px; height: 100px; object-fit: cover; border-radius: 10px;">
-</td>
-            <td>PK-004</td>
-            <td>Nuggets de Pollo Empanizados</td>
-            <td>Caja congelada x 20 unidades</td>
-            <td><span class="badge disponible">Disponible</span></td>
-            <td><a href="#contacto" class="btn-solicitar">Solicitar</a></td>
-        </tr>
-        <tr>
-            <td><img src="chorizos.png" alt="Pollo Entero Limpio" style="width: 100px; height: 100px; object-fit: cover; border-radius: 10px;">
-            <td>PK-005</td>
-            <td>Embutidos (Salchicha de Pollo)</td>
-            <td>Paquete de 8 unidades</td>
-            <td><span class="badge disponible">Disponible</span></td>
-            <td><a href="#contacto" class="btn-solicitar">Solicitar</a></td>
-        </tr>
-    </tbody>
-</table>
+  <!-- ===== PROMOCIÓN DESTACADA ===== -->
+  <section class="promo" aria-labelledby="promo-title">
+    <div class="container promo-inner">
+      <div class="promo-copy reveal">
+        <p class="promo-tag">Producto destacado de la semana</p>
+        <h2 id="promo-title">Combo Familiar Piko</h2>
+        <p>Pollo entero + pechuga deshuesada + alitas marinadas, empacado al vacío y listo para tu nevera. Ideal para la comida de fin de semana.</p>
+        <a href="#productos" class="btn btn-primary">Ver en el catálogo</a>
+      </div>
+      <div class="promo-media reveal">
+        <img src="polloentero.png" alt="Combo familiar de pollo fresco Piko y Pollo" loading="lazy">
+      </div>
+    </div>
+  </section>
 
-        <!-- SECCIÓN MULTIMEDIA (VIDEO E IFRAME) -->
-        <section id="multimedia" style="margin-top: 4rem;">
-            <h2 class="section-title">Nuestras Instalaciones & Ubicación</h2>
-            
-            <div class="media-grid">
-                <!-- Elemento Video HTML5 -->
-                <div class="media-card">
-                    <h3>Conoce nuestros Procesos</h3>
-                    <video controls poster="https://images.unsplash.com/photo-1587593810167-a84920ea0781?auto=format&fit=crop&w=600&q=80">
-                        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-                        Tu navegador no soporta el elemento de video HTML5.
-                    </video>
-                </div>
+  <!-- ===== SOBRE NOSOTROS ===== -->
+  <section class="section about" id="nosotros" aria-labelledby="about-title">
+    <div class="container about-grid">
+      <div class="about-media reveal">
+        <img src="granja.png" alt="Granja certificada de crianza de pollo Piko y Pollo" loading="lazy">
+      </div>
+      <div class="about-copy reveal">
+        <h2 id="about-title">Más que pollo, es confianza</h2>
+        <p>Piko y Pollo nació con una idea simple: que la frescura no sea una promesa de etiqueta, sino algo que se pueda ver, oler y probar. Empezamos distribuyendo a unas pocas cocinas del barrio y hoy llevamos pollo procesado bajo estrictos estándares de calidad e inocuidad a hogares, restaurantes y supermercados de toda la región.</p>
+        <p>Cada ave que sale de nuestra planta pasa por controles de higiene, empaque al vacío y una cadena de frío que no se interrumpe hasta llegar a tu cocina. Así construimos, pedido a pedido, la confianza que nos distingue.</p>
+        <div class="about-stats">
+          <div><strong>+15</strong><span>años de trayectoria</span></div>
+          <div><strong>100%</strong><span>cadena de frío</span></div>
+          <div><strong>0</strong><span>hormonas agregadas</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-                <!-- Elemento Iframe -->
-                <div class="media-card" id="contacto">
-                    <h3>Planta Principal de Distribución</h3>
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3947.863117478676!2d-75.3977!3d9.3047!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOcKwMTgnMTYuOSJOIDc1wrAyMy'ecy4OCJX!5e0!3m2!1ses!2sco!4v1620000000000!5m2!1ses!2sco" allowfullscreen="" loading="lazy"></iframe>
-                </div>
-            </div>
-        </section>
+  <!-- ===== PROCESO ===== -->
+  <section class="section process" id="proceso" aria-labelledby="process-title">
+    <div class="container">
+      <div class="section-head reveal light">
+        <h2 id="process-title">De la granja a tu mesa, en tres pasos</h2>
+        <p>Así se ve el recorrido de cada producto Piko y Pollo antes de llegar a ti.</p>
+      </div>
+      <ol class="process-steps">
+        <li class="reveal">
+          <span class="step-num">1</span>
+          <img src="granja.png" alt="Crianza en granja certificada" loading="lazy">
+          <h3>Crianza responsable</h3>
+          <p>Granjas certificadas, alimentación natural y bienestar animal desde el primer día.</p>
+        </li>
+        <li class="reveal">
+          <span class="step-num">2</span>
+          <img src="productos.png" alt="Procesamiento higiénico del pollo" loading="lazy">
+          <h3>Procesamiento higiénico</h3>
+          <p>Corte automatizado, empaque al vacío y control de calidad en cada lote.</p>
+        </li>
+        <li class="reveal">
+          <span class="step-num">3</span>
+          <img src="vehiculos.png" alt="Distribución refrigerada" loading="lazy">
+          <h3>Entrega refrigerada</h3>
+          <p>Flota propia con cadena de frío ininterrumpida hasta tu domicilio o negocio.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
 
-    </main>
+  <!-- ===== TESTIMONIOS ===== -->
+  <section class="section testimonials" id="testimonios" aria-labelledby="testi-title">
+    <div class="container">
+      <div class="section-head reveal">
+        <h2 id="testi-title">Lo que dicen quienes ya nos compran</h2>
+        <p>Restaurantes, tiendas y familias que confían en la frescura Piko y Pollo.</p>
+      </div>
+      <div class="testi-grid">
+        <figure class="testi-card reveal">
+          <blockquote>“Llevamos dos años comprándole a Piko y Pollo para el restaurante. La pechuga siempre llega fresca y a tiempo, nunca hemos tenido un problema de calidad.”</blockquote>
+          <figcaption><strong>Marcela Puello</strong><span>Restaurante El Fogón Costeño</span></figcaption>
+        </figure>
+        <figure class="testi-card reveal">
+          <blockquote>“Lo que más valoro es la puntualidad de la entrega y que el pollo llega bien frío. Se nota que cuidan la cadena de frío de verdad.”</blockquote>
+          <figcaption><strong>Jorge Támara</strong><span>Supermercado La Economía</span></figcaption>
+        </figure>
+        <figure class="testi-card reveal">
+          <blockquote>“Pedimos el combo familiar cada fin de semana. La diferencia de sabor con el pollo de siempre es real, y el pedido por WhatsApp es súper fácil.”</blockquote>
+          <figcaption><strong>Diana Salcedo</strong><span>Cliente frecuente</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
 
-    <!-- FOOTER -->
-    <footer>
-        <p>&copy; 2026 Piko y Pollo S.A.S  - Todos los derechos reservados.</p>
-        <p>Pollo Fresco de la Mejor Calidad | Visítanos en nuestras redes o escribe a <a href="mailto:contacto@pikoypollo.com">tavooromero@pikoypollo.com</a></p>
-    </footer>
+  <!-- ===== GALERÍA ===== -->
+  <section class="section gallery" aria-labelledby="gallery-title">
+    <div class="container">
+      <div class="section-head reveal">
+        <h2 id="gallery-title">Galería</h2>
+        <p>Un vistazo a nuestras instalaciones y productos.</p>
+      </div>
+      <div class="gallery-grid">
+        <button class="gallery-item reveal" data-full="granja.png"><img src="granja.png" alt="Granja de crianza" loading="lazy"></button>
+        <button class="gallery-item reveal" data-full="productos.png"><img src="productos.png" alt="Planta de procesamiento" loading="lazy"></button>
+        <button class="gallery-item reveal" data-full="vehiculos.png"><img src="vehiculos.png" alt="Vehículos de distribución" loading="lazy"></button>
+        <button class="gallery-item reveal" data-full="polloentero.png"><img src="polloentero.png" alt="Pollo entero limpio" loading="lazy"></button>
+        <button class="gallery-item reveal" data-full="pechuga.png"><img src="pechuga.png" alt="Pechuga deshuesada" loading="lazy"></button>
+        <button class="gallery-item reveal" data-full="alitasmarinadas.png"><img src="alitasmarinadas.png" alt="Alitas marinadas" loading="lazy"></button>
+      </div>
+    </div>
+  </section>
 
+  <!-- ===== CONTACTO ===== -->
+  <section class="section contact" id="contacto" aria-labelledby="contact-title">
+    <div class="container contact-grid">
+      <div class="contact-info reveal">
+        <h2 id="contact-title">Hablemos</h2>
+        <p>Escríbenos para cotizaciones al por mayor, pedidos recurrentes o cualquier pregunta sobre nuestros productos.</p>
+        <ul>
+            <li><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 4H4v16l4-4h12V4Z"/></svg><a href="mailto:contacto@pikoypollo.com">tavooromero@pikoypollo.com</a></li>
+            <li><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L7.9 9.7a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.7.6A2 2 0 0 1 22 16.9Z"/></svg><a href="tel:+573000000000">+57 321 9139894</a></li>
+            <li><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-5.7 7-11.5A7 7 0 0 0 5 9.5C5 15.3 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.3"/></svg><span>Sincelejo, Sucre, Colombia</span></li>
+            <li><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="9"/></svg><span>Lun – Sáb, 6:00 a.m. – 5:00 p.m.</span></li>
+        </ul>
+        <div class="social-row">
+          <a href="#" class="icon-btn" aria-label="Facebook"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M13.5 22v-8.4h2.8l.4-3.3h-3.2V8.1c0-1 .3-1.6 1.7-1.6h1.7V3.5C16.3 3.4 15.3 3.3 14.1 3.3c-2.5 0-4.2 1.5-4.2 4.4v2.6H7.1v3.3h2.8V22h3.6Z"/></svg></a>
+          <a href="#" class="icon-btn" aria-label="Instagram"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1"/></svg></a>
+          <a href="#" class="icon-btn" aria-label="WhatsApp"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20Zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1-.2.2-.6.8-.8 1-.1.1-.3.2-.5.1a6.5 6.5 0 0 1-3.3-2.9c-.2-.4.2-.4.6-1.3.1-.1 0-.3 0-.4-.1-.1-.5-1.3-.7-1.7-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.5.1-.7.3-.2.2-1 1-1 2.3s1 2.6 1.1 2.8c.1.2 2 3.1 4.8 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.2-.2-.5-.3Z"/></svg></a>
+        </div>
+      </div>
+
+      <form class="contact-form reveal" id="contactForm" novalidate>
+        <div class="form-row">
+          <label for="fname">Nombre</label>
+          <input type="text" id="fname" name="fname" required autocomplete="name" />
+        </div>
+        <div class="form-row">
+          <label for="fphone">Teléfono</label>
+          <input type="tel" id="fphone" name="fphone" required autocomplete="tel" />
+        </div>
+        <div class="form-row">
+          <label for="finterest">Me interesa</label>
+          <select id="finterest" name="finterest">
+            <option value="Aves enteras">Aves enteras</option>
+            <option value="Cortes">Cortes</option>
+            <option value="Preparados">Preparados</option>
+            <option value="Embutidos">Embutidos</option>
+            <option value="Compra al por mayor">Compra al por mayor</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label for="fmsg">Mensaje</label>
+          <textarea id="fmsg" name="fmsg" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Enviar por WhatsApp</button>
+        <p class="form-note" id="formNote" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+
+    <div class="map-wrap reveal">
+      <iframe title="Ubicación de la planta principal Piko y Pollo" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3947.863117478676!2d-75.3977!3d9.3047!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOcKwMTgnMTYuOSJOIDc1wrAyMy'ecy4OCJX!5e0!3m2!1ses!2sco!4v1620000000000!5m2!1ses!2sco" width="100%" height="360" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <span class="brand-text light">Piko <em>&amp;</em> Pollo</span>
+      <p>Pollo fresco de la mejor calidad, procesado y distribuido con los más altos estándares de inocuidad.</p>
+      <div class="social-row">
+        <a href="#" class="icon-btn" aria-label="Facebook"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M13.5 22v-8.4h2.8l.4-3.3h-3.2V8.1c0-1 .3-1.6 1.7-1.6h1.7V3.5C16.3 3.4 15.3 3.3 14.1 3.3c-2.5 0-4.2 1.5-4.2 4.4v2.6H7.1v3.3h2.8V22h3.6Z"/></svg></a>
+        <a href="#" class="icon-btn" aria-label="Instagram"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1"/></svg></a>
+        <a href="#" class="icon-btn" aria-label="WhatsApp"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20Zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1-.2.2-.6.8-.8 1-.1.1-.3.2-.5.1a6.5 6.5 0 0 1-3.3-2.9c-.2-.4.2-.4.6-1.3.1-.1 0-.3 0-.4-.1-.1-.5-1.3-.7-1.7-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.5.1-.7.3-.2.2-1 1-1 2.3s1 2.6 1.1 2.8c.1.2 2 3.1 4.8 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.2-.2-.5-.3Z"/></svg></a>
+      </div>
+    </div>
+    <nav class="footer-links" aria-label="Enlaces rápidos">
+      <h4>Enlaces rápidos</h4>
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#productos">Productos</a></li>
+        <li><a href="#testimonios">Clientes</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+    <div class="footer-hours">
+      <h4>Horarios</h4>
+      <p>Lunes a viernes: 6:00 a.m. – 5:00 p.m.</p>
+      <p>Sábados: 7:00 a.m. – 1:00 p.m.</p>
+      <p>Domingos y festivos: cerrado</p>
+    </div>
+    <div class="footer-contact">
+      <h4>Contacto</h4>
+      <p>Sincelejo, Sucre, Colombia</p>
+      <p><a href="mailto:contacto@pikoypollo.com">tavooromero@pikoypollo.com</a></p>
+      <p><a href="tel:+573000000000">+57 3219139894</a></p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Piko y Pollo S.A.S — Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<!-- ===== BOTÓN FLOTANTE WHATSAPP ===== -->
+<a class="whatsapp-fab" id="whatsappFab" href="#" aria-label="Escribir por WhatsApp" target="_blank" rel="noopener">
+  <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20Zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1-.2.2-.6.8-.8 1-.1.1-.3.2-.5.1a6.5 6.5 0 0 1-3.3-2.9c-.2-.4.2-.4.6-1.3.1-.1 0-.3 0-.4-.1-.1-.5-1.3-.7-1.7-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.5.1-.7.3-.2.2-1 1-1 2.3s1 2.6 1.1 2.8c.1.2 2 3.1 4.8 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.2-.2-.5-.3Z"/></svg>
+</a>
+
+<!-- ===== PANEL DE CARRITO ===== -->
+<div class="cart-overlay" id="cartOverlay"></div>
+<aside class="cart-panel" id="cartPanel" role="dialog" aria-modal="true" aria-labelledby="cartTitle" aria-hidden="true">
+  <div class="cart-panel-head">
+    <h2 id="cartTitle">Tu pedido</h2>
+    <button class="icon-btn" id="cartClose" aria-label="Cerrar carrito">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <p class="cart-empty" id="cartEmpty">Aún no has agregado productos. Explora el catálogo y arma tu pedido.</p>
+  </div>
+  <div class="cart-summary">
+    <div class="cart-total-row">
+      <span>Total estimado</span>
+      <strong id="cartTotal">$0</strong>
+    </div>
+    <button class="btn btn-whatsapp btn-block" id="cartCheckout" disabled>Enviar pedido por WhatsApp</button>
+    <p class="cart-note">Los precios son referenciales. Confirmamos disponibilidad y total final por WhatsApp.</p>
+  </div>
+</aside>
+
+<!-- ===== LIGHTBOX GALERÍA ===== -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Cerrar imagen">
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6l12 12M18 6 6 18"/></svg>
+  </button>
+  <img id="lightboxImg" src="" alt="" />
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
